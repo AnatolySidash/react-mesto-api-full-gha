@@ -15,20 +15,14 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-      .then(this._checkResponse)
-      .then((data) => {
-        return data;
-      });
+      .then(this._checkResponse);
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-      .then(this._checkResponse)
-      .then((data) => {
-        return data;
-      });
+      .then(this._checkResponse);
   }
 
   editProfile({ name, job }) {
@@ -114,7 +108,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-65',
+  baseUrl: 'http://localhost:4000',
   headers: {
     authorization: '46ca9225-5df7-4ceb-a9c3-33677b40d8c1',
     'Content-Type': 'application/json'

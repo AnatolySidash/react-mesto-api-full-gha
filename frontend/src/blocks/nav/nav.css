@@ -1,0 +1,14 @@
+.nav {
+   display: flex;
+   gap: 24px;
+}
+
+@media screen and (max-width: 500px) {
+   .nav {
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+   }
+}

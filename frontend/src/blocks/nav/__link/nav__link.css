@@ -1,0 +1,27 @@
+.nav__link {
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 18px;
+   line-height: 1.2;
+   color: #fff;
+   text-decoration: none;
+   transition: opacity 0.3s ease-in-out;
+}
+
+.nav__link:hover {
+   opacity: 0.6;
+}
+
+@media screen and (max-width: 500px) {
+   .nav__link {
+      color: #A9A9A9;
+   }
+}
+
+@media screen and (max-width: 320px) {
+   .nav__link {
+      font-size: 14px;
+      line-height: 17px;
+   }
+}

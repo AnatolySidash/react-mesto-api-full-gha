@@ -9,7 +9,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
    const cardLikeButtonClassName = (`elements__like-icon ${isLiked ? 'elements__like-icon_active' : ''}`);
 
    return (
-      < article className="elements__item">
+      <article className="elements__item">
          <img className="elements__image"
             src={card.link}
             alt={card.name}
