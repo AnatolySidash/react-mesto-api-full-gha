@@ -18,7 +18,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const payload = { _id: user._id };
       const token = generateToken(payload);
-      res.cookie('jwt', token, { httpOnly: true });
+      res.cookie('jwt', token, { httpOnly: true, sameSite: true });
       return res.status(OK_STATUS_CODE).send({ message: 'Авторизация прошла успешно! Доступ разрешён!' });
     })
     .catch((err) => {

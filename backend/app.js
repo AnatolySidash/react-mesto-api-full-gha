@@ -1,10 +1,11 @@
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const signinRouter = require('./routes/signin');
@@ -12,9 +13,14 @@ const signupRouter = require('./routes/signup');
 const { auth } = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-error');
 
-const { PORT = 3001, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { PORT = 4000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
 app.use(helmet());
 

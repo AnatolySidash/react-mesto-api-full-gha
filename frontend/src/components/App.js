@@ -36,7 +36,7 @@ function App() {
   React.useEffect(() => {
     if (isLoggedIn) {
       api.getUserInfo().then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
       })
         .catch((err) => {
           console.error(`Ошибка получения данных профиля: ${err}`);
@@ -55,10 +55,8 @@ function App() {
   }, [isLoggedIn]);
 
   function handleCardLike(card) {
-    // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-    // Отправляем запрос в API и получаем обновлённые данные карточки
     if (!isLiked) {
       api.addLike(card._id)
         .then((newCard) =>
@@ -119,7 +117,7 @@ function App() {
   function handleUpdateUser({ name, about }) {
     api.editProfile({ name: name, job: about })
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -130,7 +128,7 @@ function App() {
   function handleUpdateAvatar({ link }) {
     api.changeAvatar({ link })
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -150,26 +148,24 @@ function App() {
   }
 
   function checkToken() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      auth.checkToken(token)
-        .then((data) => {
-          if (!data) {
-            return;
-          };
-          setEmail(data.data.email);
-          setLoggedIn(true);
-          navigate("/", { replace: true });
-        })
-        .catch((err) => {
-          setLoggedIn(false);
-          console.error(`Ошибка токена: ${err}`);
-        });
-    }
+    auth.checkToken()
+      .then((data) => {
+        if (!data) {
+          return;
+        };
+        setEmail(data.data.email);
+        setLoggedIn(true);
+        navigate("/", { replace: true });
+      })
+      .catch((err) => {
+        setLoggedIn(false);
+        console.error(`Ошибка токена: ${err}`);
+      });
   }
 
   React.useEffect(() => {
     checkToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleLogin() {
@@ -177,7 +173,6 @@ function App() {
   }
 
   function logout() {
-    localStorage.removeItem("token");
     setLoggedIn(false);
     setEmail('');
     navigate("/sign-in");

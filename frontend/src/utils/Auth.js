@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:4000"
+const baseUrl = "http://localhost:4000";
 
 function getResponseData(res) {
    if (!res.ok) {
@@ -13,6 +13,7 @@ export const register = (email, password) => {
       headers: {
          "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify({ email, password })
    })
       .then(getResponseData);
@@ -24,18 +25,19 @@ export const login = (email, password) => {
       headers: {
          "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify({ email, password })
    })
       .then(getResponseData);
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
    return fetch(`${baseUrl}/users/me`, {
       method: "GET",
       headers: {
          "Content-Type": "application/json",
-         "Authorization": `Bearer ${token}`
       },
+      credentials: "include",
    })
       .then(getResponseData);
 };

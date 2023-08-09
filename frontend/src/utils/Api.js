@@ -13,14 +13,16 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -32,7 +34,8 @@ class Api {
       body: JSON.stringify({
         "name": name,
         "about": job
-      })
+      }),
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -42,6 +45,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
+      credentials: "include",
       body: JSON.stringify({
         "name": name,
         "link": link
@@ -56,7 +60,8 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         "avatar": link,
-      })
+      }),
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -67,7 +72,8 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         "cardId": cardId,
-      })
+      }),
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -78,7 +84,8 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         "cardId": cardId,
-      })
+      }),
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -89,7 +96,8 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         "cardId": cardId,
-      })
+      }),
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
@@ -100,7 +108,8 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         "id": id,
-      })
+      }),
+      credentials: "include",
     })
       .then(this._checkResponse);
   }
