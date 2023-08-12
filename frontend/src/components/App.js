@@ -17,7 +17,6 @@ import { ProtectedRoute } from './ProtectedRoute.js';
 import * as auth from '../utils/Auth';
 import InfoTooltip from './InfoTooltip.js';
 
-
 function App() {
 
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
@@ -55,7 +54,7 @@ function App() {
   }, [isLoggedIn]);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes?.some(i => i === currentUser._id);
 
     if (!isLiked) {
       api.addLike(card._id)
@@ -174,6 +173,7 @@ function App() {
 
   function logout() {
     setLoggedIn(false);
+    // auth.clearCookie();
     setEmail('');
     navigate("/sign-in");
   }

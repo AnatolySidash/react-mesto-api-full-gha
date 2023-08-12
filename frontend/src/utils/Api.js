@@ -90,7 +90,7 @@ class Api {
       .then(this._checkResponse);
   }
 
-  checkLikeQuantity({ cardId }) {
+  checkLikeQuantity(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "GET",
       headers: this._headers,
@@ -119,7 +119,6 @@ class Api {
 const api = new Api({
   baseUrl: 'http://localhost:4000',
   headers: {
-    authorization: '46ca9225-5df7-4ceb-a9c3-33677b40d8c1',
     'Content-Type': 'application/json'
   }
 });

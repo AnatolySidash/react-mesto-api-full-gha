@@ -1,11 +1,10 @@
 import React from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../images/01_header/logo.svg';
 
 function Header({ email, onLogout }) {
 
    const location = useLocation();
-   const navigate = useNavigate();
 
    return (
       <header className="header">

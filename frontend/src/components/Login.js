@@ -16,13 +16,13 @@ function Login({ onLogin, setEmail }) {
       setFormValue({
          ...formValue,
          [name]: value
+
       });
    };
 
    const handleSubmit = (event) => {
       event.preventDefault();
       auth.login(formValue.email, formValue.password).then((data) => {
-         localStorage.setItem("token", data.token);
          onLogin();
          setEmail(formValue.email);
          navigate('/');
