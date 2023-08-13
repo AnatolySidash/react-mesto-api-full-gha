@@ -133,7 +133,7 @@ module.exports.changeAvatar = (req, res, next) => {
     });
 };
 
-// module.exports.clearCookies = (req, res) => {
-//   res.clearCookie('jwt');
-//   res.status(200).json('User Logged out');
-// };
+module.exports.clearCookies = (req, res) => {
+  res.clearCookie('jwt');
+  res.status(200).json('User Logged out');
+};

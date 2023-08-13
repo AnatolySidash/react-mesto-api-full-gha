@@ -28,6 +28,4 @@ userRouter.patch('/me/avatar', celebrate({
   }),
 }), changeAvatar);
 
-// userRouter.post('/', clearCookies);
-
 module.exports = userRouter;

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:4000";
+const baseUrl = "https://api.mesto.sidash.nomoreparties.co";
 
 function getResponseData(res) {
    if (!res.ok) {
@@ -32,7 +32,7 @@ export const login = (email, password) => {
 };
 
 // export const clearCookie = () => {
-//    return fetch(`${baseUrl}/`, {
+//    return fetch(`${baseUrl}/signout`, {
 //       method: "POST",
 //       headers: {
 //          "Content-Type": "application/json"
