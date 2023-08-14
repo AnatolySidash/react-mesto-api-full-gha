@@ -172,10 +172,15 @@ function App() {
   }
 
   function logout() {
-    setLoggedIn(false);
-    // auth.clearCookie();
-    setEmail('');
-    navigate("/sign-in");
+    auth.clearCookie()
+      .then((res) => {
+        setLoggedIn(false);
+        navigate("/sign-in", { replace: true });
+        setEmail('');
+      })
+      .catch((err) => {
+        console.error(`Ошибка: ${err}`);
+      });
   }
 
   return (

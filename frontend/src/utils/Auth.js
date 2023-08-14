@@ -31,16 +31,16 @@ export const login = (email, password) => {
       .then(getResponseData);
 };
 
-// export const clearCookie = () => {
-//    return fetch(`${baseUrl}/signout`, {
-//       method: "POST",
-//       headers: {
-//          "Content-Type": "application/json"
-//       },
-//       credentials: "include",
-//    })
-//       .then(getResponseData);
-// }
+export const clearCookie = () => {
+   return fetch(`${baseUrl}/signout`, {
+      method: "GET",
+      headers: {
+         "Content-Type": "application/json"
+      },
+      credentials: "include",
+   })
+      .then(getResponseData);
+}
 
 export const checkToken = () => {
    return fetch(`${baseUrl}/users/me`, {
